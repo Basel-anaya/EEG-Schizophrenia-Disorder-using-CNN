@@ -9,8 +9,12 @@ The training signals are stored in two folders named `../input/button-tone-sz` a
 ### Methodology
 Preprocessing
 Before training the model, the data was preprocessed by filtering the signals in the frequency range of **0.5 Hz** to **30 Hz** to remove any noise or artifacts. The signals were then downsampled to reduce the number of time points and speed up training.
+          
+          
+### Model Architecture
+The model used in this project is a Convolutional Neural Network (CNN). The input to the model is a `2D matrix of size 64x1924`, representing `64 channels` and `1924 time points`. The model consists of 4 convolutional layers, each followed by a max-pooling layer. The output of the last pooling layer is then flattened and fed into a fully connected layer, which outputs the final classification.
 
-
+``` Python
 # Simple Neural Networks with 5000 Neurons
 model_2 = Sequential()
 model_2.add(Conv2D(32, kernel_size=(5, 20),
@@ -35,11 +39,7 @@ history_2 = model.fit(X_train_2d, Y_train_norm,
           verbose=1,
           shuffle=True,
           validation_data=(X_test_2d, Y_test_norm), callbacks=[checkpoint])
-          
-          
-          
-### Model Architecture
-The model used in this project is a Convolutional Neural Network (CNN). The input to the model is a `2D matrix of size 64x1924`, representing `64 channels` and `1924 time points`. The model consists of 4 convolutional layers, each followed by a max-pooling layer. The output of the last pooling layer is then flattened and fed into a fully connected layer, which outputs the final classification.
+```
 
 ### Training
 The model was trained on a `NVIDIA Tesla V100 GPU` using the `Adam optimizer` with a learning rate of **0.000005**. The loss function used was binary cross-entropy, as this is a binary classification problem. The model was trained for 300 epochs, with early stopping applied if the validation loss did not improve for 20 consecutive epochs.
