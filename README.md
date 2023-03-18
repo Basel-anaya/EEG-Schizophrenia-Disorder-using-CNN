@@ -6,6 +6,8 @@ This project focuses on using `Convolutional Neural Network (CNN)` to classify E
 ### Data
 The training signals are stored in two folders named `../input/button-tone-sz` and `../input/buttontonesz2`. Each folder contains EEG signals from different patients. The data is in the form of .mat files, and each file contains a matrix of size `64x7696`, representing `64 channels` and `7696 time points`. The data has already been preprocessed and cleaned.
 
+![image](https://user-images.githubusercontent.com/81964452/226142358-6fd9317f-35dc-4051-b1dd-a0d86bf492e8.png)
+
 ### Methodology
 Preprocessing
 Before training the model, the data was preprocessed by filtering the signals in the frequency range of **0.5 Hz** to **30 Hz** to remove any noise or artifacts. The signals were then downsampled to reduce the number of time points and speed up training.
